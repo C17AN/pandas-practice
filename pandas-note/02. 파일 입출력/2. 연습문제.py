@@ -76,3 +76,26 @@ df.loc[
     ),
     ["survived", "pclass", "age", "fare"],
 ].head(10)
+
+
+# 9.
+# tips 데이터셋 중 day가 금요일(Fri), 토요일(Sat) 만 필터링 합니다.
+# tip이 $10보다 적게 낸 데이터만 필터링합니다.
+# 컬럼은 total_bill, tip, smoker, time만 출력합니다.
+# 상위 10개 행만 출력합니다.
+
+tips = sns.load_dataset("tips")
+tips.head()
+
+
+# isin() 함수를 사용하면 tips.loc[tips['day'].isin(['Sat', 'Fri'])] 처럼 작성할 수 있다.
+tips.loc[
+    ((tips["day"] == "Sat") | (tips["day"] == "Fri")) & (tips["tip"] < 10),
+    ["total_bill", "tip", "smoker", "time"],
+].head(10)
+
+# To-Be
+tips.loc[
+    tips["day"].isin(["Sat", "Fri"]) & (tips["tip"] < 10),
+    ["total_bill", "tip", "smoker", "time"],
+].head(10)
