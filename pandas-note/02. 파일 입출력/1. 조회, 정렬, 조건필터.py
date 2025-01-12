@@ -12,3 +12,4 @@ df.loc[5, "class"]
 df.loc[2:5, ["age"]]
 
 df.head()
+df
